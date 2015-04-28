@@ -1,5 +1,5 @@
 <?php
-
+// Copyright 2015 Google Inc. All Rights Reserved.
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
@@ -18,7 +18,16 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
+
+if (isset($_SERVER['SERVER_SOFTWARE']) &&
+    strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false)
+{
+	define('ENVIRONMENT', 'production');
+}
+else
+{
 	define('ENVIRONMENT', 'development');
+}
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

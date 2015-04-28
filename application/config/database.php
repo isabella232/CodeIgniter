@@ -1,4 +1,5 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+// Copyright 2015 Google Inc. All Rights Reserved.
 /*
 | -------------------------------------------------------------------
 | DATABASE CONNECTIVITY SETTINGS
@@ -45,24 +46,39 @@
 | the active record class
 */
 
-$active_group = 'default';
-$active_record = TRUE;
+$active_group = (ENVIRONMENT == 'production') ? 'prod' : 'dev';
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = '';
-$db['default']['password'] = '';
-$db['default']['database'] = '';
-$db['default']['dbdriver'] = 'mysql';
-$db['default']['dbprefix'] = '';
-$db['default']['pconnect'] = TRUE;
-$db['default']['db_debug'] = TRUE;
-$db['default']['cache_on'] = FALSE;
-$db['default']['cachedir'] = '';
-$db['default']['char_set'] = 'utf8';
-$db['default']['dbcollat'] = 'utf8_general_ci';
-$db['default']['swap_pre'] = '';
-$db['default']['autoinit'] = TRUE;
-$db['default']['stricton'] = FALSE;
+$db['prod']['hostname'] = getenv('PROD_DB_HOSTNAME');
+$db['prod']['username'] = getenv('PROD_DB_USERNAME');
+$db['prod']['password'] = getenv('PROD_DB_PASSWORD');
+$db['prod']['database'] = getenv('PROD_DB_DATABASE');
+$db['prod']['dbdriver'] = 'mysql';
+$db['prod']['dbprefix'] = '';
+$db['prod']['pconnect'] = FALSE;
+$db['prod']['db_debug'] = TRUE;
+$db['prod']['cache_on'] = FALSE;
+$db['prod']['cachedir'] = '';
+$db['prod']['char_set'] = 'utf8';
+$db['prod']['dbcollat'] = 'utf8_general_ci';
+$db['prod']['swap_pre'] = '';
+$db['prod']['autoinit'] = TRUE;
+$db['prod']['stricton'] = FALSE;
+
+$db['dev']['hostname'] = getenv('DEV_DB_HOSTNAME');
+$db['dev']['username'] = getenv('DEV_DB_USERNAME');
+$db['dev']['password'] = getenv('DEV_DB_PASSWORD');
+$db['dev']['database'] = getenv('DEV_DB_DATABASE');
+$db['dev']['dbdriver'] = 'mysql';
+$db['dev']['dbprefix'] = '';
+$db['dev']['pconnect'] = FALSE;
+$db['dev']['db_debug'] = TRUE;
+$db['dev']['cache_on'] = FALSE;
+$db['dev']['cachedir'] = '';
+$db['dev']['char_set'] = 'utf8';
+$db['dev']['dbcollat'] = 'utf8_general_ci';
+$db['dev']['swap_pre'] = '';
+$db['dev']['autoinit'] = TRUE;
+$db['dev']['stricton'] = FALSE;
 
 
 /* End of file database.php */
