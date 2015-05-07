@@ -1,4 +1,5 @@
 <?php
+// Copyright 2015 Google Inc. All Rights Reserved.
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
@@ -355,10 +356,11 @@ $config['encryption_key'] = '';
 | except for 'cookie_prefix' and 'cookie_httponly', which are ignored here.
 |
 */
-$config['sess_driver'] = 'files';
+$config['sess_driver'] = 'memcached';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = NULL;
+// Actual value doesn't matter as long as it's of the form <host>:<port>.
+$config['sess_save_path'] = 'localhost:11211';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;

@@ -1,0 +1,24 @@
+# Copyright 2015 Google Inc. All Rights Reserved.
+application: <project-id>
+version: 1
+runtime: php55
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /.*
+  script: index.php
+
+env_variables:
+  # Change below to "development" for local development.
+  CI_ENV: "production"
+  # Change below to match the CloudSQL settings in production.
+  PROD_DB_HOSTNAME: "/cloudsql/<project-id>/<instance-id>"
+  PROD_DB_USERNAME: "root"
+  PROD_DB_PASSWORD: ""
+  PROD_DB_DATABASE: "<database-name>"
+  # Change below to match your settings for local development.
+  DEV_DB_HOSTNAME: ""
+  DEV_DB_USERNAME: ""
+  DEV_DB_PASSWORD: ""
+  DEV_DB_DATABASE: ""

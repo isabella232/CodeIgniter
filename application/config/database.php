@@ -1,4 +1,5 @@
 <?php
+// Copyright 2015 Google Inc. All Rights Reserved.
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
@@ -59,10 +60,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
-$active_group = 'default';
+$active_group = (ENVIRONMENT == 'production') ? 'prod' : 'dev';
 $query_builder = TRUE;
 
-$db['default'] = array(
+$db['prod'] = array(
+	'dsn'	=> '',
+	'hostname' => getenv('PROD_DB_HOSTNAME'),
+	'username' => getenv('PROD_DB_USERNAME'),
+	'password' => getenv('PROD_DB_PASSWORD'),
+	'database' => getenv('PROD_DB_DATABASE'),
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => TRUE,
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+
+$db['dev'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => '',
